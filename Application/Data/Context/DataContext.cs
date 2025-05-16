@@ -1,9 +1,12 @@
-﻿namespace Application.Data.Context;
+﻿using Application.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
-public class DataContext
+namespace Application.Data.Context;
+
+public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
 {
-
-
+    
+    public virtual DbSet<MapEntity> Maps { get; set; }
 
 
 

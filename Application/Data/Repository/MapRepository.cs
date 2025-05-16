@@ -1,5 +1,8 @@
-﻿namespace Application.Data.Repository;
+﻿using Application.Data.Context;
+using Application.Domain.Entities;
 
-public class MapRepository
+namespace Application.Data.Repository;
+
+public class MapRepository(DataContext context) : BaseRepository<MapEntity>(context) 
 {
 }
