@@ -18,11 +18,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="External\Interfaces\" />
-    <Folder Include="External\Models\" />
-    <Folder Include="External\Response\" />
-    <Folder Include="External\Services\" />
-  </ItemGroup>
-
 </Project>
