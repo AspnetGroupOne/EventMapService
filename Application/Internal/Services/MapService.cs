@@ -1,7 +1,16 @@
-﻿namespace Application.Internal.Services;
+﻿using Application.Interfaces;
 
-public class MapService
+namespace Application.Internal.Services;
+
+public class MapService(IMapRepository mapRepository)
 {
+    private readonly IMapRepository _mapRepository = mapRepository;
+
+
+
+
+
+
 
 
 
