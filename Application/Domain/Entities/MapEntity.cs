@@ -7,7 +7,8 @@ namespace Application.Domain.Entities;
 public class MapEntity
 {
     [Key]
-    public string MapId { get; set; } = null!;
+    public string MapId { get; set; } = Guid.NewGuid().ToString();
+    public string EventId { get; set; } = null!;
     public string ImageUrl { get; set; } = null!;
     public string? MapNodesJson { get; set; }
 }
