@@ -16,7 +16,7 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configura
 
 builder.Services.Configure<EventSettings>(builder.Configuration.GetSection("EventApi"));
 
-builder.Services.AddScoped<IEventIdValidationService, EventIdValidationService>();
+builder.Services.AddHttpClient<IEventIdValidationService, EventIdValidationService>();
 
 builder.Services.AddScoped<IMapRepository, MapRepository>();
 builder.Services.AddScoped<IMapService, MapService>();

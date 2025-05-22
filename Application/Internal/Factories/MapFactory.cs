@@ -1,5 +1,6 @@
 ﻿using Application.Domain.Entities;
 using Application.Domain.Models;
+using System.Text.Json;
 
 namespace Application.Internal.Factories;
 
@@ -12,7 +13,7 @@ public class MapFactory
         {
             EventId = addForm.EventId,
             ImageUrl = addForm.ImageUrl,
-            MapNodesJson = addForm.MapNodesJson
+            MapNodesJson = JsonSerializer.Serialize(addForm.Nodes)
         };
     }
 
@@ -22,21 +23,23 @@ public class MapFactory
         return new MapEntity()
         {
             EventId = updateForm.EventId,
-            MapId = updateForm.MapId,
             ImageUrl = updateForm.ImageUrl,
-            MapNodesJson = updateForm.MapNodesJson
+            MapNodesJson = JsonSerializer.Serialize(updateForm.Nodes)
         };
     }
 
     public static EventMap Create(MapEntity mapEntity) 
     {
         if (mapEntity == null) { return null!; }
+
+        var nodes = string.IsNullOrWhiteSpace(mapEntity.MapNodesJson) ? new List<MapNodes>() : JsonSerializer.Deserialize<List<MapNodes>>(mapEntity.MapNodesJson!) ?? new List<MapNodes>();
+
+
         return new EventMap() 
         {
             EventId = mapEntity.EventId,
-            MapId = mapEntity.MapId,
             ImageUrl = mapEntity.ImageUrl,
-            MapNodesJson = mapEntity.MapNodesJson
+            Nodes = nodes
         };
     }
 
