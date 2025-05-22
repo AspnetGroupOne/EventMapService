@@ -10,6 +10,7 @@ public class MapFactory
         if (addForm == null) { return null!; }
         return new MapEntity()
         {
+            EventId = addForm.EventId,
             ImageUrl = addForm.ImageUrl,
             MapNodesJson = addForm.MapNodesJson
         };
@@ -20,6 +21,7 @@ public class MapFactory
         if (updateForm == null) { return null!; }
         return new MapEntity()
         {
+            EventId = updateForm.EventId,
             MapId = updateForm.MapId,
             ImageUrl = updateForm.ImageUrl,
             MapNodesJson = updateForm.MapNodesJson
@@ -31,6 +33,7 @@ public class MapFactory
         if (mapEntity == null) { return null!; }
         return new EventMap() 
         {
+            EventId = mapEntity.EventId,
             MapId = mapEntity.MapId,
             ImageUrl = mapEntity.ImageUrl,
             MapNodesJson = mapEntity.MapNodesJson
