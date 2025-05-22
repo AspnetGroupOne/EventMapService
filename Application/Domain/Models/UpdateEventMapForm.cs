@@ -2,8 +2,7 @@
 
 public class UpdateEventMapForm
 {
-    public string MapId { get; set; } = null!;
     public string EventId { get; set; } = null!;
     public string ImageUrl { get; set; } = null!;
-    public string? MapNodesJson { get; set; }
+    public List<MapNodes> Nodes { get; set; } = new();
 }
