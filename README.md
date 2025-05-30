@@ -1,9 +1,5 @@
 # EventMapService
 
-## Sequence diagram plantuml
-
-<img src="https://github.com/user-attachments/assets/ee0fd56a-978e-4088-b3f7-4a727a4bc291" width="400">
-
 # Postman:
 
 ## Authentication:
@@ -21,28 +17,26 @@ Invalid requests will be met with:
 
 ## POST and PUT: 
 
-
 ```json
-
-
 ```
 
-
 ## GET:
-
 
 ```json
 ```
 
 ## DELETE
 
-
 ```json
 ```
 
+# Sequence diagram plantuml
+
+<img src="https://github.com/user-attachments/assets/ee0fd56a-978e-4088-b3f7-4a727a4bc291" width="400">
+
 # Usage in the frontend:
 
-
+Coming soon..
 
 ### Created By:
 
