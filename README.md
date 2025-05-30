@@ -1,6 +1,8 @@
 # EventMapService
 
-Made by https://github.com/SimonR-prog
+## Sequence diagram plantuml
+
+<img src="https://github.com/user-attachments/assets/ee0fd56a-978e-4088-b3f7-4a727a4bc291" width="400">
 
 # Postman:
 
@@ -39,3 +41,9 @@ Invalid requests will be met with:
 ```
 
 # Usage in the frontend:
+
+
+
+### Created By:
+
+https://github.com/SimonR-prog
