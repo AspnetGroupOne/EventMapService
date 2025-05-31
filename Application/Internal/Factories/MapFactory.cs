@@ -1,6 +1,7 @@
 ﻿using Application.Domain.Entities;
 using Application.Domain.Models;
 using System.Text.Json;
+using System.Collections.Generic;
 
 namespace Application.Internal.Factories;
 
@@ -8,8 +9,10 @@ public class MapFactory
 {
     public static MapEntity Create(AddEventMapForm addForm)
     {
-        if (addForm == null) { return null!; }
-        return new MapEntity()
+        if (addForm == null)
+            return null!;
+
+        return new MapEntity
         {
             EventId = addForm.EventId,
             ImageUrl = addForm.ImageUrl,
@@ -19,8 +22,10 @@ public class MapFactory
 
     public static MapEntity Create(UpdateEventMapForm updateForm)
     {
-        if (updateForm == null) { return null!; }
-        return new MapEntity()
+        if (updateForm == null)
+            return null!;
+
+        return new MapEntity
         {
             EventId = updateForm.EventId,
             ImageUrl = updateForm.ImageUrl,
@@ -28,22 +33,28 @@ public class MapFactory
         };
     }
 
-    public static EventMap Create(MapEntity mapEntity) 
+    public static EventMap Create(MapEntity mapEntity)
     {
-        if (mapEntity == null) { return null!; }
+        if (mapEntity == null)
+            return null!;
 
-        var nodes = string.IsNullOrWhiteSpace(mapEntity.MapNodesJson) ? new List<MapNodes>() : JsonSerializer.Deserialize<List<MapNodes>>(mapEntity.MapNodesJson!) ?? new List<MapNodes>();
 
+        // This fix made by chatgpt after issues where this would return null och mapnode names and gridids. 
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
 
-        return new EventMap() 
+        var nodes = string.IsNullOrWhiteSpace(mapEntity.MapNodesJson)
+            ? new List<MapNodes>()
+            : JsonSerializer.Deserialize<List<MapNodes>>(mapEntity.MapNodesJson, options)
+              ?? new List<MapNodes>();
+
+        return new EventMap
         {
             EventId = mapEntity.EventId,
             ImageUrl = mapEntity.ImageUrl,
             Nodes = nodes
         };
     }
-
-
-
-
 }
